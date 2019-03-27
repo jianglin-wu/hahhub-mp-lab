@@ -17,7 +17,7 @@
     font-size: 32rpx;
     line-height: 1.8;
     color: #808080;
-    .image-box {
+    .avatar-box {
       float: left;
       margin-right: 8rpx;
       border: 1px #ddd solid;
@@ -25,6 +25,7 @@
       object-fit: cover;
       width: 50px;
       height: 50px;
+      overflow: hidden;
     }
 
   }
@@ -36,9 +37,13 @@
     </view>
 
     <view class="content">
-      <image class="image-box" src="https://image-cdn.hahhub.com/css/images/banner.jpg" />
+      <open-data class="avatar-box" type="userAvatarUrl"></open-data>
       天色微微向晚，天上飘着懒洋洋的云彩。下半截沉在黑暗里，上半截仍浮在阳光中。那天我二十一岁，在我一生的黄金时代，我有好多奢望。我想爱，想吃，还想在一瞬间变成天上半明半暗的云。后来我才知道，生活就是个缓慢受锤的过程，人一天天老下去，奢望也一天天消失，最后变得像挨了锤的牛一样。可是我过二十一岁生日时没有预见到这一点。我觉得自己会永远生猛下去，什么也锤不了我。
     </view>
+
+    <!-- <button open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+      获取用户信息
+    </button> -->
   </view>
 </template>
 
@@ -51,6 +56,9 @@
     }
     onLoad() {
       console.log('onLoad')
+    }
+    onGotUserInfo(e) {
+      console.log('onGotUserInfo', e)
     }
   }
 </script>
