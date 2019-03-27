@@ -1,0 +1,39 @@
+<style lang="less">
+</style>
+
+<script>
+import wepy from 'wepy'
+import '@babel/polyfill'
+// import { createUserPortrait, getUserPortrait } from './fe-sdk-userportrait-esm'
+// import { createUserPortrait } from './fe-sdk-userportrait-esm'
+
+// const userPortrait = createUserPortrait({
+//   serverUrl: 'https://api-userportraitdc.dev.highso.com.cn',
+//   distinctId: 'id',
+//   debug: true
+// })
+
+// userPortrait.on('ready', (config) => {
+//   console.log('config:', config)
+// })
+
+// console.log('getUserPortrai!!!!:', getUserPortrait())
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/index'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    }
+  }
+
+  onLaunch() {
+    console.log('on launch:')
+  }
+}
+</script>

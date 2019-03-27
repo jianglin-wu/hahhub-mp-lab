@@ -1,0 +1,15 @@
+{
+	"description": "A WePY project",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wx8d07ee13b6315130",
+	"projectname": "fe-mp-use-sdk-demo",
+	"miniprogramRoot": "dist/",
+	"condition": {}
+}
