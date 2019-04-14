@@ -3,21 +3,123 @@
 
 <script>
 import wepy from 'wepy'
-import '@babel/polyfill'
-// import { createUserPortrait, getUserPortrait } from './fe-sdk-userportrait-esm'
-// import { createUserPortrait } from './fe-sdk-userportrait-esm'
+import 'regenerator-runtime/runtime'
+import userPortrait from 'fe-sdk-userportrait/dist/index.aio'
 
-// const userPortrait = createUserPortrait({
-//   serverUrl: 'https://api-userportraitdc.dev.highso.com.cn',
-//   distinctId: 'id',
-//   debug: true
-// })
+// 7  陆海系统访问任务
+// 65  陆海系统访问嗨学课堂小程序
+// 67  陆海系统预约直播
 
-// userPortrait.on('ready', (config) => {
-//   console.log('config:', config)
-// })
+userPortrait.init({
+  serverUrl: 'https://api-userportraitdc.dev.highso.com.cn',
+  project: 'hello',
+  eventIdList: [65, 7, 69]
+}, {
+  // debug: true,
+  delayTime: 500,
+  maxTryCount: 1,
+  fieldAutoFill: false,
+  fieldFillPlaceholder: null,
+  dataListLen: 1,
+  autoReady: false
+})
 
-// console.log('getUserPortrai!!!!:', getUserPortrait())
+userPortrait.track(7, {
+  occurredTime: Date.now(), // [必传]
+  accessUnionId: '访问者unionId', // [必传]
+  taskTitle: '陆海任务名称 1',
+  taskId: 12345,
+  accessSource_key: 13, // 访问来源类型
+  accessSource_value: '123',
+  taskType: 'type', // 任务类型
+  userName: 'name', // 内部用户名称，如果外部用户则显示为空
+  customerId: 213123, // 访问者customerID
+  phoneNo: 21313213 // 访问者手机号
+})
+
+setTimeout(() => {
+  userPortrait.setConfig('unionId', 'myUnionId')
+  userPortrait.setConfig('distinctId', 'myDistinctId')
+  userPortrait.trackEventTime(69, 3)
+  userPortrait.emitReady()
+  // userPortrait.onAppHide()
+
+  // setTimeout(() => {
+  //   userPortrait.track(69, {
+  //     taskTitle: '陆海任务名称2',
+  //     taskId: 12345,
+  //     accessSource_key: 13, // 访问来源类型
+  //     accessSource_value: '123',
+  //     taskType: 'type', // 任务类型
+  //     userName: 'name', // 内部用户名称，如果外部用户则显示为空
+  //     customerId: 213123, // 访问者customerID
+  //     phoneNo: 21313213 // 访问者手机号
+  //   }, 3)
+  // }, 3450)
+  setTimeout(() => {
+    userPortrait.track(7, {
+      occurredTime: Date.now(), // [必传]
+      accessUnionId: '访问者unionId', // [必传]
+      taskTitle: '陆海任务名称 1',
+      taskId: 12345,
+      accessSource_key: 13, // 访问来源类型
+      accessSource_value: '123',
+      taskType: 'type', // 任务类型
+      userName: 'name', // 内部用户名称，如果外部用户则显示为空
+      customerId: 213123, // 访问者customerID
+      phoneNo: 21313213 // 访问者手机号
+    })
+    setTimeout(() => {
+      userPortrait.track(7, {
+        occurredTime: Date.now(), // [必传]
+        accessUnionId: '访问者unionId', // [必传]
+        taskTitle: '陆海任务名称 1',
+        taskId: 12345,
+        accessSource_key: 13, // 访问来源类型
+        accessSource_value: '123',
+        taskType: 'type', // 任务类型
+        userName: 'name', // 内部用户名称，如果外部用户则显示为空
+        customerId: 213123, // 访问者customerID
+        phoneNo: 21313213 // 访问者手机号
+      })
+      setTimeout(() => {
+        userPortrait.track(7, {
+          occurredTime: Date.now(), // [必传]
+          accessUnionId: '访问者unionId', // [必传]
+          taskTitle: '陆海任务名称 1',
+          taskId: 12345,
+          accessSource_key: 13, // 访问来源类型
+          accessSource_value: '123',
+          taskType: 'type', // 任务类型
+          userName: 'name', // 内部用户名称，如果外部用户则显示为空
+          customerId: 213123, // 访问者customerID
+          phoneNo: 21313213 // 访问者手机号
+        })
+      }, 300)
+    }, 300)
+  }, 300)
+}, 300)
+
+wx.onAppHide(() => {
+  logServer('onAppHide!')
+})
+wx.onAppShow(() => {
+  logServer('onAppShow!')
+})
+
+const logServer = (msg) => {
+  console.log('logServer:', msg)
+  // wx.request({
+  //   method: 'GET',
+  //   url: `http://192.168.33.210:8088?${msg}`
+  // })
+}
+
+// let count = 0
+// const rundom = parseInt(Math.random() * 1000000).toString(16)
+// setInterval(() => {
+//   logServer(`setInterval: ${rundom}: ${count++}`)
+// }, 1000)
 
 export default class extends wepy.app {
   config = {
@@ -33,7 +135,7 @@ export default class extends wepy.app {
   }
 
   onLaunch() {
-    console.log('on launch:')
+    logServer('onLaunch!')
   }
 }
 </script>

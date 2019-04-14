@@ -28,7 +28,7 @@ module.exports = {
   },
   appConfig: {
     noPromiseAPI: ['createSelectorQuery']
-  }
+  },
 }
 
 if (prod) {

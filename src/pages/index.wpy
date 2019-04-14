@@ -49,6 +49,9 @@
 
 <script>
   import wepy from 'wepy'
+  // import { getUserPortrait } from 'fe-sdk-userportrait/dist/index.aio'
+
+  // console.log('getUserPortrai!!!!:', getUserPortrait())
 
   export default class Index extends wepy.page {
     config = {
